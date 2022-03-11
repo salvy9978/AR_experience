@@ -23,11 +23,22 @@ function createBox(scene, pos) {
   box.setAttribute("width", "0.2");
   box.setAttribute("height", "0.2");
   box.setAttribute("depth", "0.2");
-  box.setAttribute("color", "#4CC3D9");
-  box.setAttribute("rotation", "0 45 0");
+  box.setAttribute("rotation", "0 0 0");
   box.setAttribute("ammo-body", "type: dynamic; emitCollisionEvents: true;");
   box.setAttribute("ammo-shape", "type: box");
-  box.setAttribute("ammo-restitution", ".5");
+  box.setAttribute("ammo-restitution", "0");
+  /*<!-- 
+  src0 -> cara derecha
+  src1 -> cara izquierda
+  src2 -> cara arriba
+  src3 -> cara abajo
+  src4 -> cara frontal
+  src5 -> cara trasera
+  -->*/
+  box.setAttribute(
+    "multisrc",
+    "src0: #img_sprite2; src1: #img_sprite2; src2: #img_sprite3; src3: #img_sprite4; src4: #img_sprite1; src5: #img_sprite1;"
+  );
   box.setAttribute("collision-detection", {});
 
   scene.appendChild(box);

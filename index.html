@@ -3,7 +3,8 @@
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script src="https://mixedreality.mozilla.org/ammo.js/builds/ammo.wasm.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
-    <title>A-Frame Physics Example</title>
+    <script src="https://cdn.rawgit.com/elbobo/aframe-multisrc-component/b6d23310/dist/0.3/aframe-multisrc-component.js"></script>
+    <title>AR Tower Bloxx</title>
     <script src="script.js"></script>
   </head>
   <body>
@@ -12,20 +13,27 @@
       webxr="requiredFeatures: hit-test, local-floor;"
       physics="driver: ammo; debug: true; debugDrawMode: 1;"
     >
+      <a-assets>
+        <img id="img_sprite1" src="/resources/images/sprite1.jpg" />
+        <img id="img_sprite2" src="/resources/images/sprite2.jpg" />
+        <img id="img_sprite3" src="/resources/images/sprite3.jpg" />
+        <img id="img_sprite4" src="/resources/images/sprite4.jpg" />
+      </a-assets>
       <a-box
         ammo-body="type: dynamic;"
         ammo-shape="type: box"
-        ammo-restitution=".5"
+        ammo-restitution="0"
         position="0 5 0"
         scale="0.2 0.2 0.2"
         rotation="0 45 0"
         color="#4CC3D9"
       ></a-box>
 
-      <a-box
+      <!--
+        <a-box
         ammo-body="type: kinematic"
         ammo-shape="type: box"
-        ammo-restitution=".5"
+        ammo-restitution="0"
         id="user"
         position="0 0 0"
         height="1.6"
@@ -33,14 +41,14 @@
         depth="0.5"
         color="red"
         user-body
-      >
-      </a-box>
+      ></a-box>
+      -->
 
       <a-plane
         id="plane"
         ammo-body="type: static;"
         ammo-shape="type: box"
-        ammo-restitution=".1"
+        ammo-restitution="0"
         position="0 0 0"
         color="grey"
         height="1"
