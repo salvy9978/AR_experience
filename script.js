@@ -22,7 +22,6 @@ docReady(function () {
     var td = tr.appendChild(document.createElement("td"));
     td.className = "punto";
     tabla.appendChild(tr);
-    console.log("i");
   }
 });
 
