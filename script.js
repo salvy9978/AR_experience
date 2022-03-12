@@ -17,18 +17,20 @@ function positionAmmoBody(body, p) {
 }
 
 function createBox(scene, pos) {
-  const box = document.createElement("a-box");
-  box.setAttribute("id", "myBox");
-  box.setAttribute("position", `${pos.x} ${pos.y + 1.6} ${pos.z}`);
-  box.setAttribute("width", "0.2");
-  box.setAttribute("height", "0.2");
-  box.setAttribute("depth", "0.2");
-  box.setAttribute("color", "#4CC3D9");
-  box.setAttribute("rotation", "0 45 0");
+  const box = document.createElement("a-entity");
+  box.setAttribute("gltf-model", "#piso");
   box.setAttribute("ammo-body", "type: dynamic; emitCollisionEvents: true;");
-  box.setAttribute("ammo-shape", "type: box");
+  box.setAttribute("position", `${pos.x} ${pos.y + 1.6} ${pos.z}`);
+  box.setAttribute("scale", "0.1 0.1 0.1");
+  box.setAttribute(
+    "ammo-shape",
+    "type: box; fit: manual; halfExtents:0.1 0.1 0.1"
+  );
+
+  box.setAttribute("id", "myBox");
   box.setAttribute("ammo-restitution", ".5");
   box.setAttribute("collision-detection", {});
+  box.setAttribute("mass", "1000");
 
   scene.appendChild(box);
 
@@ -58,7 +60,7 @@ AFRAME.registerSystem("hit-test-system", {
   },
   init: function () {
     this.cubes = [];
-    this.cubes.push(document.querySelector("a-box"));
+    this.cubes.push(document.querySelector("a-entity"));
 
     this.isPlaneInPlace = false;
     this.reticle = this.data.reticle;
@@ -90,14 +92,6 @@ AFRAME.registerSystem("hit-test-system", {
           );
           this.cubes.push(createBox(this.el.sceneEl, pos));
         }
-
-        /*console.log(e);
-        const box = document.querySelector("a-box");
-        positionAmmoBody(box.body, new THREE.Vector3(0, 5, -5));
-        const velocity = new Ammo.btVector3(0, 0, 0);
-        box.body.setLinearVelocity(velocity);
-        Ammo.destroy(velocity);
-        */
       });
     });
   },

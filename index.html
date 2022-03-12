@@ -4,34 +4,27 @@
     <script src="https://mixedreality.mozilla.org/ammo.js/builds/ammo.wasm.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
     <title>A-Frame Physics Example</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
     <script src="script.js"></script>
   </head>
   <body>
     <a-scene
       hit-test-system="reticle: #reticle; target: #plane"
-      webxr="requiredFeatures: hit-test, local-floor;"
+      webxr="requiredFeatures: hit-test, local-floor, dom-overlay; overlayElement: #overlay;"
       physics="driver: ammo; debug: true; debugDrawMode: 1;"
     >
       <a-assets>
         <a-asset-item id="piso" src="/resources/gtlf/piso.gltf"></a-asset-item>
       </a-assets>
-      <a-box
-        ammo-body="type: dynamic;"
-        ammo-shape="type: box"
-        ammo-restitution=".5"
-        position="0 5 -3"
-        scale="0.2 0.2 0.2"
-        rotation="0 45 0"
-        color="#4CC3D9"
-      ></a-box>
 
       <a-entity
         gltf-model="#piso"
         ammo-body="type:   dynamic; 
         emitCollisionEvents: true;"
         position="0 8 -3"
-        scale="0.3 0.3 0.3"
-        ammo-shape="type: box; fit: manual; halfExtents:0.3 0.3 0.3"
+        mass="1000"
+        scale="0.1 0.1 0.1"
+        ammo-shape="type: box; fit: manual; halfExtents:0.1 0.1 0.1"
       >
       </a-entity>
 
@@ -58,5 +51,23 @@
         </a-ring>
       </a-entity>
     </a-scene>
+    <div id="overlay">
+      <div id="div-vidas">
+          <img class="foto-vida" src="/resources/images/vida.png"/>
+          <img class="foto-vida" src="/resources/images/vida.png"/>
+        <img class="foto-vida" src="/resources/images/vida.png"/>
+      </div>
+      <div id="div-pisos">
+          <table class="default">
+              <tr>
+                <td>Celda 1</td>
+              </tr>
+              <tr>
+                <td>Celda 4</td>
+              </tr>
+    
+            </table>
+      </div>
+
   </body>
 </html>
