@@ -1,3 +1,31 @@
+/* rellenar tabla de puntos */
+let pisos = 10;
+
+function docReady(fn) {
+  // see if DOM is already available
+  if (
+    document.readyState === "complete" ||
+    document.readyState === "interactive"
+  ) {
+    // call on next available tick
+    setTimeout(fn, 1);
+  } else {
+    document.addEventListener("DOMContentLoaded", fn);
+  }
+}
+
+docReady(function () {
+  var tabla = document.querySelector("#tabla-puntos");
+
+  for (var i = 0; i < pisos; i++) {
+    var tr = document.createElement("tr");
+    var td = tr.appendChild(document.createElement("td"));
+    td.className = "punto";
+    tabla.appendChild(tr);
+    console.log("i");
+  }
+});
+
 /*eslint-disable*/
 function positionAmmoBody(body, p) {
   const transform = new Ammo.btTransform();

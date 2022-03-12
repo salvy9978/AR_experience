@@ -19,7 +19,11 @@
   position: fixed;
   bottom: 24px;
   left: 24px;
-  border: red;
-  border: 3px solid #73ad21;
-  width: 20%;
+}
+
+.punto {
+  border: 1px solid black;
+  background-color: grey;
+  width: 15px;
+  height: 15px;
 }
